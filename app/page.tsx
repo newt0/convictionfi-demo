@@ -515,7 +515,6 @@ export default function ConvictionFiLanding() {
 
       {/* Mint Your DeFAI NFT Agent */}
       <section
-        ref={mintSectionRef}
         id="mint-section"
         className="py-20 bg-gradient-to-br from-[#4DA2FF]/5 to-[#011829]/5"
       >
@@ -533,68 +532,37 @@ export default function ConvictionFiLanding() {
           <Card className="border-2 border-[#4DA2FF]/20 bg-white/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-8">
+                {/* 左側: デモ情報 */}
                 <div>
                   <h3 className="text-xl font-bold text-[#011829] mb-4">
-                    Configure Your Agent
+                    Sample Configuration
                   </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-[#011829] mb-2">
-                        Strategy Archetype
-                      </label>
-                      <div className="w-full p-3 border border-gray-200 rounded-lg bg-white">
-                        <span className="text-[#030F1C]">SUI_MAXIMIZER</span>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#011829] mb-2">
-                        Mint Price (USDC)
-                      </label>
-                      <div className="w-full p-3 border border-gray-200 rounded-lg bg-white">
-                        <span className="text-[#030F1C]">1000</span>
-                      </div>
-                      <p className="text-sm text-[#030F1C] mt-1">
-                        This is the total budget your AI agent will manage.
-                      </p>
-                    </div>
+                  <div className="space-y-4 text-[#030F1C] text-sm">
+                    <p>
+                      <strong>Strategy:</strong> SUI_MAXIMIZER
+                    </p>
+                    <p>
+                      <strong>Mint Price:</strong> 1000 USDC
+                    </p>
+                    <p>
+                      <strong>Total Cost:</strong> 1010 USDC (incl. minting fee)
+                    </p>
+                    <p>This is the budget your AI agent will manage.</p>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold text-[#011829] mb-4">
-                    Wallet Connection
-                  </h3>
-                  <div className="space-y-4">
-                    <Button className="w-full bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white p-4 text-lg">
-                      <Wallet className="mr-2 h-5 w-5" />
-                      Connect Sui Wallet
+                {/* 右側: 遷移ボタン */}
+                <div className="flex flex-col justify-center items-center space-y-6">
+                  <Wallet className="h-10 w-10 text-[#011829]" />
+                  <Link href="/mint">
+                    <Button className="bg-[#011829] hover:bg-[#022a3d] text-white text-lg px-8 py-4">
+                      Mint Now
                     </Button>
-                    <div className="text-center text-sm text-[#030F1C]">
-                      Wallet not connected
-                    </div>
-                    <div className="border-t pt-4">
-                      <div className="text-sm text-[#030F1C] mb-4">
-                        <div className="flex justify-between">
-                          <span>Minting Fee:</span>
-                          <span>10 USDC</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Mint Price:</span>
-                          <span>1000 USDC</span>
-                        </div>
-                        <div className="flex justify-between font-bold text-[#011829] border-t pt-2 mt-2">
-                          <span>Total:</span>
-                          <span>1010 USDC</span>
-                        </div>
-                      </div>
-                      <Button
-                        className="w-full bg-[#011829] hover:bg-[#022a3d] text-white p-4 text-lg"
-                        disabled
-                      >
-                        Mint Agent NFT
-                      </Button>
-                    </div>
-                  </div>
+                  </Link>
+                  <p className="text-sm text-[#030F1C]">
+                    Connect your wallet and mint directly from the dedicated
+                    page.
+                  </p>
                 </div>
               </div>
             </CardContent>
