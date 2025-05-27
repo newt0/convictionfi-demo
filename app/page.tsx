@@ -518,7 +518,7 @@ export default function ConvictionFiLanding() {
         </div>
       </section>
 
-      {/* Mint Your DeFAI NFT Agent */}
+      {/* Mint Your DeFAI Agent Agent */}
       <section
         id="mint-section"
         className="py-20 bg-gradient-to-br from-[#4DA2FF]/5 to-[#011829]/5"
@@ -526,7 +526,7 @@ export default function ConvictionFiLanding() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#011829] mb-4">
-              Mint Your DeFAI NFT Agent
+              Mint Your DeFAI Agent
             </h2>
             <p className="text-lg text-[#030F1C]">
               Transform your conviction into an autonomous trading agent in

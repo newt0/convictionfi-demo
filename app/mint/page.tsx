@@ -280,7 +280,7 @@ export default function MintPage() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-bold text-[#011829] mb-4">
-              Mint Your DeFAI NFT Agent
+              Mint Your DeFAI Agent
             </h1>
             <p className="text-lg text-[#030F1C]">
               Configure your autonomous trading agent and transform your
