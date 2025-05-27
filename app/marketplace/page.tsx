@@ -1,12 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Progress } from "@/components/ui/progress"
-import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   ArrowLeft,
   Bot,
@@ -19,8 +25,8 @@ import {
   Copy,
   ShoppingCart,
   Filter,
-} from "lucide-react"
-import Link from "next/link"
+} from "lucide-react";
+import Link from "next/link";
 
 // Mock agent data
 const mockAgents = [
@@ -120,112 +126,91 @@ const mockAgents = [
     daysActive: 15,
     winRate: 82.1,
   },
-]
+];
 
-type SortOption = "newest" | "pnl" | "stage" | "strategy"
-type FilterOption = "all" | "SUI_MAXIMIZER" | "BTC_HODLER" | "STABLE_OPTIMIZER"
+type SortOption = "newest" | "pnl" | "stage" | "strategy";
+type FilterOption = "all" | "SUI_MAXIMIZER" | "BTC_HODLER" | "STABLE_OPTIMIZER";
 
 export default function MarketplacePage() {
-  const [sortBy, setSortBy] = useState<SortOption>("newest")
-  const [filterBy, setFilterBy] = useState<FilterOption>("all")
-  const [searchQuery, setSearchQuery] = useState("")
+  const [sortBy, setSortBy] = useState<SortOption>("newest");
+  const [filterBy, setFilterBy] = useState<FilterOption>("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Filter and sort agents
   const filteredAgents = mockAgents
     .filter((agent) => {
-      if (filterBy === "all") return true
-      return agent.strategy === filterBy
+      if (filterBy === "all") return true;
+      return agent.strategy === filterBy;
     })
     .filter((agent) => {
-      if (!searchQuery) return true
+      if (!searchQuery) return true;
       return (
         agent.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
         agent.strategyLabel.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      );
     })
     .sort((a, b) => {
       switch (sortBy) {
         case "pnl":
-          const aPnL = ((a.currentValue - a.mintPrice) / a.mintPrice) * 100
-          const bPnL = ((b.currentValue - b.mintPrice) / b.mintPrice) * 100
-          return bPnL - aPnL
+          const aPnL = ((a.currentValue - a.mintPrice) / a.mintPrice) * 100;
+          const bPnL = ((b.currentValue - b.mintPrice) / b.mintPrice) * 100;
+          return bPnL - aPnL;
         case "stage":
-          return b.evolutionStage - a.evolutionStage
+          return b.evolutionStage - a.evolutionStage;
         case "strategy":
-          return a.strategy.localeCompare(b.strategy)
+          return a.strategy.localeCompare(b.strategy);
         case "newest":
         default:
-          return Number.parseInt(b.id.slice(1)) - Number.parseInt(a.id.slice(1))
+          return (
+            Number.parseInt(b.id.slice(1)) - Number.parseInt(a.id.slice(1))
+          );
       }
-    })
+    });
 
   const calculatePnL = (agent: (typeof mockAgents)[0]) => {
-    const pnl = agent.currentValue - agent.mintPrice
-    const percentage = (pnl / agent.mintPrice) * 100
-    return { pnl, percentage }
-  }
+    const pnl = agent.currentValue - agent.mintPrice;
+    const percentage = (pnl / agent.mintPrice) * 100;
+    return { pnl, percentage };
+  };
 
   const calculateMarketStatus = (agent: (typeof mockAgents)[0]) => {
-    const difference = agent.marketPrice - agent.currentValue
-    const percentageDiff = (difference / agent.currentValue) * 100
+    const difference = agent.marketPrice - agent.currentValue;
+    const percentageDiff = (difference / agent.currentValue) * 100;
 
     if (Math.abs(percentageDiff) < 2) {
-      return { status: "fair", badge: null }
+      return { status: "fair", badge: null };
     } else if (percentageDiff > 0) {
       return {
         status: "premium",
-        badge: { text: `+${percentageDiff.toFixed(1)}%`, color: "bg-red-100 text-red-700" },
-      }
+        badge: {
+          text: `+${percentageDiff.toFixed(1)}%`,
+          color: "bg-red-100 text-red-700",
+        },
+      };
     } else {
       return {
         status: "discount",
-        badge: { text: `${percentageDiff.toFixed(1)}%`, color: "bg-green-100 text-green-700" },
-      }
+        badge: {
+          text: `${percentageDiff.toFixed(1)}%`,
+          color: "bg-green-100 text-green-700",
+        },
+      };
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="border-b border-gray-100 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-[#011829] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">C</span>
-              </div>
-              <span className="text-[#011829] font-bold text-xl">ConvictionFi</span>
-            </Link>
-            <div className="flex items-center space-x-4">
-              <Link href="/dashboard">
-                <Button variant="ghost" className="text-[#030F1C]">
-                  Dashboard
-                </Button>
-              </Link>
-              <Link href="/mint">
-                <Button variant="ghost" className="text-[#030F1C]">
-                  Mint Agent
-                </Button>
-              </Link>
-              <Link href="/">
-                <Button variant="ghost" className="text-[#030F1C]">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Home
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Main Content */}
       <div className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-[#011829] mb-2">Agent Marketplace</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#011829] mb-2">
+              Agent Marketplace
+            </h1>
             <p className="text-lg text-[#030F1C]">
-              Explore conviction-based AI agents minted by others. Filter by strategy, performance, or evolution stage.
+              Explore conviction-based AI agents minted by others. Filter by
+              strategy, performance, or evolution stage.
             </p>
           </div>
 
@@ -244,7 +229,10 @@ export default function MarketplacePage() {
               </div>
 
               {/* Strategy Filter */}
-              <Select value={filterBy} onValueChange={(value: FilterOption) => setFilterBy(value)}>
+              <Select
+                value={filterBy}
+                onValueChange={(value: FilterOption) => setFilterBy(value)}
+              >
                 <SelectTrigger className="w-full sm:w-48">
                   <Filter className="mr-2 h-4 w-4" />
                   <SelectValue placeholder="Filter by strategy" />
@@ -253,13 +241,18 @@ export default function MarketplacePage() {
                   <SelectItem value="all">All Strategies</SelectItem>
                   <SelectItem value="SUI_MAXIMIZER">SUI Maximizer</SelectItem>
                   <SelectItem value="BTC_HODLER">BTC Hodler</SelectItem>
-                  <SelectItem value="STABLE_OPTIMIZER">Stable Optimizer</SelectItem>
+                  <SelectItem value="STABLE_OPTIMIZER">
+                    Stable Optimizer
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             {/* Sort */}
-            <Select value={sortBy} onValueChange={(value: SortOption) => setSortBy(value)}>
+            <Select
+              value={sortBy}
+              onValueChange={(value: SortOption) => setSortBy(value)}
+            >
               <SelectTrigger className="w-full md:w-48">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
@@ -282,11 +275,14 @@ export default function MarketplacePage() {
           {/* Agent Cards Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {filteredAgents.map((agent) => {
-              const { pnl, percentage } = calculatePnL(agent)
-              const isProfit = pnl >= 0
+              const { pnl, percentage } = calculatePnL(agent);
+              const isProfit = pnl >= 0;
 
               return (
-                <Card key={agent.id} className="border-2 hover:border-[#4DA2FF] transition-colors">
+                <Card
+                  key={agent.id}
+                  className="border-2 hover:border-[#4DA2FF] transition-colors"
+                >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <CardTitle className="text-[#011829] flex items-center">
@@ -295,7 +291,9 @@ export default function MarketplacePage() {
                       </CardTitle>
                       <Badge
                         className={
-                          agent.status === "Active" ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"
+                          agent.status === "Active"
+                            ? "bg-green-100 text-green-700"
+                            : "bg-yellow-100 text-yellow-700"
                         }
                       >
                         {agent.status === "Active" ? "🟢" : "🟡"} {agent.status}
@@ -303,19 +301,27 @@ export default function MarketplacePage() {
                     </div>
                     <div className="flex items-center space-x-2">
                       <agent.icon className="h-4 w-4 text-[#4DA2FF]" />
-                      <Badge className={agent.color}>{agent.strategyLabel}</Badge>
+                      <Badge className={agent.color}>
+                        {agent.strategyLabel}
+                      </Badge>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {/* Financial Metrics */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <p className="text-sm font-medium text-[#011829]">Mint Price</p>
+                        <p className="text-sm font-medium text-[#011829]">
+                          Mint Price
+                        </p>
                         <p className="text-[#030F1C]">{agent.mintPrice} USDC</p>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-[#011829]">Current Value</p>
-                        <p className="text-[#030F1C] font-semibold">{agent.currentValue} USDC</p>
+                        <p className="text-sm font-medium text-[#011829]">
+                          Current Value
+                        </p>
+                        <p className="text-[#030F1C] font-semibold">
+                          {agent.currentValue} USDC
+                        </p>
                       </div>
                     </div>
 
@@ -323,28 +329,40 @@ export default function MarketplacePage() {
                     <div className="border-t pt-4">
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-sm font-medium text-[#011829]">Market Price</p>
-                          <p className="text-[#030F1C] font-bold text-lg">{agent.marketPrice} USDC</p>
+                          <p className="text-sm font-medium text-[#011829]">
+                            Market Price
+                          </p>
+                          <p className="text-[#030F1C] font-bold text-lg">
+                            {agent.marketPrice} USDC
+                          </p>
                         </div>
                         {(() => {
-                          const marketStatus = calculateMarketStatus(agent)
+                          const marketStatus = calculateMarketStatus(agent);
                           return marketStatus.badge ? (
-                            <Badge className={marketStatus.badge.color}>{marketStatus.badge.text}</Badge>
-                          ) : null
+                            <Badge className={marketStatus.badge.color}>
+                              {marketStatus.badge.text}
+                            </Badge>
+                          ) : null;
                         })()}
                       </div>
                     </div>
 
                     {/* P&L */}
                     <div>
-                      <p className="text-sm font-medium text-[#011829]">Performance</p>
+                      <p className="text-sm font-medium text-[#011829]">
+                        Performance
+                      </p>
                       <div className="flex items-center space-x-2">
                         {isProfit ? (
                           <TrendingUp className="h-4 w-4 text-green-600" />
                         ) : (
                           <TrendingDown className="h-4 w-4 text-red-600" />
                         )}
-                        <span className={`font-semibold ${isProfit ? "text-green-600" : "text-red-600"}`}>
+                        <span
+                          className={`font-semibold ${
+                            isProfit ? "text-green-600" : "text-red-600"
+                          }`}
+                        >
                           {isProfit ? "+" : ""}
                           {pnl.toFixed(1)} USDC ({percentage.toFixed(1)}%)
                         </span>
@@ -354,29 +372,40 @@ export default function MarketplacePage() {
                     {/* Evolution Progress */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <p className="text-sm font-medium text-[#011829]">Evolution</p>
+                        <p className="text-sm font-medium text-[#011829]">
+                          Evolution
+                        </p>
                         <span className="text-sm text-[#030F1C]">
                           Stage {agent.evolutionStage}/{agent.maxStage}
                         </span>
                       </div>
-                      <Progress value={(agent.evolutionStage / agent.maxStage) * 100} className="h-2" />
+                      <Progress
+                        value={(agent.evolutionStage / agent.maxStage) * 100}
+                        className="h-2"
+                      />
                     </div>
 
                     {/* Agent Stats */}
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
                         <p className="text-[#030F1C]">Win Rate</p>
-                        <p className="font-medium text-[#011829]">{agent.winRate}%</p>
+                        <p className="font-medium text-[#011829]">
+                          {agent.winRate}%
+                        </p>
                       </div>
                       <div>
                         <p className="text-[#030F1C]">Active</p>
-                        <p className="font-medium text-[#011829]">{agent.daysActive} days</p>
+                        <p className="font-medium text-[#011829]">
+                          {agent.daysActive} days
+                        </p>
                       </div>
                     </div>
 
                     {/* Owner */}
                     <div>
-                      <p className="text-xs text-[#030F1C]">Owner: {agent.owner}</p>
+                      <p className="text-xs text-[#030F1C]">
+                        Owner: {agent.owner}
+                      </p>
                     </div>
 
                     {/* Action Buttons */}
@@ -395,7 +424,7 @@ export default function MarketplacePage() {
                     </div>
                   </CardContent>
                 </Card>
-              )
+              );
             })}
           </div>
 
@@ -408,10 +437,12 @@ export default function MarketplacePage() {
             >
               Load More Agents
             </Button>
-            <p className="text-sm text-[#030F1C] mt-2">Showing all available agents</p>
+            <p className="text-sm text-[#030F1C] mt-2">
+              Showing all available agents
+            </p>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
