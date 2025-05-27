@@ -59,7 +59,7 @@ export function Navigation() {
             mobile ? "w-full mt-2" : ""
           } bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white font-medium`}
         >
-          Mint Agent
+          Mint
         </Button>
       </Link>
     </>

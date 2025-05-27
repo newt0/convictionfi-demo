@@ -446,12 +446,12 @@ export default function MintPage() {
               {mintingState === "minting" ? (
                 <>
                   <Zap className="mr-2 h-5 w-5 animate-spin" />
-                  Minting Agent NFT...
+                  Minting DeFAI Agent NFT...
                 </>
               ) : (
                 <>
                   <Bot className="mr-2 h-5 w-5" />
-                  Mint Agent NFT
+                  Mint DeFAI Agent
                 </>
               )}
             </Button>
