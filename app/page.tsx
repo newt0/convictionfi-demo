@@ -604,8 +604,44 @@ export default function ConvictionFiLanding() {
       {/* Footer */}
       <footer className="bg-gray-100 text-gray-500 py-6">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+          {/* 著作権 & SNS */}
+          <div className="flex items-center space-x-6">
+            <span className="text-sm">
+              © 2025 VillainsLeague. All rights reserved.
+            </span>
+            <div className="flex space-x-4 text-gray-500">
+              <a
+                href="https://x.com/conviction_sui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/convictionfi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/ConvictionFi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Founder */}
           <div className="text-sm">
-            © 2025 VillainsLeague. All rights reserved. <br />
             Founder:{" "}
             <a
               href="https://x.com/kyohei_nft"
@@ -614,42 +650,6 @@ export default function ConvictionFiLanding() {
               className="hover:underline"
             >
               @kyohei_nft
-            </a>
-          </div>
-          <div className="flex space-x-4 text-gray-500">
-            <a
-              href="https://x.com/conviction_sui"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/convictionfi/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            {/* <a
-              href="https://github.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black"
-              aria-label="GitHub"
-            >
-              <Github className="w-5 h-5" />
-            </a> */}
-            <a
-              href="https://www.facebook.com/ConvictionFi"
-              className="hover:text-black"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-5 h-5" />
             </a>
           </div>
         </div>
