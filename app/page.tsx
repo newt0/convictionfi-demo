@@ -53,12 +53,12 @@ export default function ConvictionFiLanding() {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#011829] mb-6 leading-tight">
               Mint Your Conviction.
               <br />
-              Let It Trade.
-              <br />
-              <span className="text-[#4DA2FF]">You Rest.</span>
+              <span className="text-[#4DA2FF]">DeFAI Agent as NFT.</span>
             </h1>
             <p className="text-xl md:text-2xl text-[#030F1C] mb-10 max-w-3xl mx-auto leading-relaxed">
-              Your belief becomes an agent. Automated. Autonomous. Evolving.
+              The NFT isn’t just a token. It’s your Guardian — standing between
+              you and DeFi & Crypto Investing. A Safety Layer, encoded with
+              conviction.{" "}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
