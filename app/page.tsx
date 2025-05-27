@@ -17,9 +17,9 @@ import {
   TrendingUp,
   Bot,
   Wallet,
-  Github,
-  Twitter,
-  Linkedin,
+  // Github,
+  // Twitter,
+  // Linkedin,
   MessageCircle,
   Play,
   Coins,
@@ -30,6 +30,7 @@ import {
   Cpu,
 } from "lucide-react";
 import Link from "next/link";
+import { Twitter, Linkedin, Github, Facebook } from "lucide-react";
 
 export default function ConvictionFiLanding() {
   const mintSectionRef = useRef<HTMLElement>(null);
@@ -601,128 +602,55 @@ export default function ConvictionFiLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#011829] text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                {/* <div className="w-8 h-8 bg-[#4DA2FF] rounded-lg flex items-center justify-center"> */}
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                  {/* <span className="text-white font-bold text-sm">C</span> */}
-                  <img
-                    src="convictionfi_icon.png"
-                    alt="ConvictionFi Logo"
-                    className="h-6 w-6"
-                  />
-                </div>
-                <span className="text-white font-bold text-xl">
-                  ConvictionFi
-                </span>
-              </div>
-              <p className="text-gray-300 mb-6 max-w-md">
-                Transforming conviction into autonomous AI trading agents. Built
-                on Sui, evolving on Walrus, powered by your beliefs.
-              </p>
-              <div className="flex space-x-4">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <Twitter className="h-5 w-5" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <MessageCircle className="h-5 w-5" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <Github className="h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Product</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    How It Works
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Strategies
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Roadmap
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Resources</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Whitepaper
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Support
-                  </a>
-                </li>
-              </ul>
-            </div>
+      <footer className="bg-gray-100 text-gray-500 py-6">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+          <div className="text-sm">
+            © 2025 VillainsLeague. All rights reserved. <br />
+            Founder:{" "}
+            <a
+              href="https://x.com/kyohei_nft"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              @kyohei_nft
+            </a>
           </div>
-
-          <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-300 text-sm">
-              © 2025 ConvictionFi. All rights reserved.
-            </div>
-            <div className="flex space-x-6 text-gray-300 text-sm mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Credits
-              </a>
-            </div>
+          <div className="flex space-x-4 text-gray-500">
+            <a
+              href="https://x.com/conviction_sui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black"
+              aria-label="Twitter"
+            >
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/convictionfi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            {/* <a
+              href="https://github.com/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black"
+              aria-label="GitHub"
+            >
+              <Github className="w-5 h-5" />
+            </a> */}
+            <a
+              href="https://www.facebook.com/ConvictionFi"
+              className="hover:text-black"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </footer>
