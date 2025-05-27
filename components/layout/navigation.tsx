@@ -1,36 +1,42 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, User } from "lucide-react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, User } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navigationItems = [
   { name: "Marketplace", href: "/marketplace" },
   { name: "Compare", href: "/compare" },
   { name: "Profile", href: "/profile" },
   { name: "Dashboard", href: "/dashboard" },
-]
+];
 
 // Mock user data - in real app this would come from auth context
 const mockUser = {
   isConnected: true,
   handle: "@kyohei_nft",
-}
+};
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === "/" && pathname === "/") return true
-    if (href !== "/" && pathname.startsWith(href)) return true
-    return false
-  }
+    if (href === "/" && pathname === "/") return true;
+    if (href !== "/" && pathname.startsWith(href)) return true;
+    return false;
+  };
 
-  const NavItems = ({ mobile = false, onItemClick }: { mobile?: boolean; onItemClick?: () => void }) => (
+  const NavItems = ({
+    mobile = false,
+    onItemClick,
+  }: {
+    mobile?: boolean;
+    onItemClick?: () => void;
+  }) => (
     <>
       {navigationItems.map((item) => (
         <Link
@@ -47,12 +53,16 @@ export function Navigation() {
         </Link>
       ))}
       <Link href="/mint" onClick={onItemClick}>
-        <Button className={`${mobile ? "w-full mt-2" : ""} bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white font-medium`}>
+        <Button
+          className={`${
+            mobile ? "w-full mt-2" : ""
+          } bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white font-medium`}
+        >
           Mint Agent
         </Button>
       </Link>
     </>
-  )
+  );
 
   return (
     <nav className="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
@@ -61,9 +71,16 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-[#011829] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">C</span>
+              {/* <span className="text-white font-bold text-sm">C</span> */}
+              <img
+                src="convictionfi_icon.png"
+                alt="ConvictionFi Logo"
+                className="h-6 w-6"
+              />
             </div>
-            <span className="text-[#011829] font-bold text-xl">ConvictionFi</span>
+            <span className="text-[#011829] font-bold text-xl">
+              ConvictionFi
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -79,7 +96,10 @@ export function Navigation() {
                 <span className="font-medium">{mockUser.handle}</span>
               </div>
             ) : (
-              <Button variant="outline" className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white">
+              <Button
+                variant="outline"
+                className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white"
+              >
                 Connect Wallet
               </Button>
             )}
@@ -124,5 +144,5 @@ export function Navigation() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

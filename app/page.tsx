@@ -606,8 +606,14 @@ export default function ConvictionFiLanding() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-[#4DA2FF] rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">C</span>
+                {/* <div className="w-8 h-8 bg-[#4DA2FF] rounded-lg flex items-center justify-center"> */}
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                  {/* <span className="text-white font-bold text-sm">C</span> */}
+                  <img
+                    src="convictionfi_icon.png"
+                    alt="ConvictionFi Logo"
+                    className="h-6 w-6"
+                  />
                 </div>
                 <span className="text-white font-bold text-xl">
                   ConvictionFi
