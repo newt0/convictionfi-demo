@@ -1,10 +1,16 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import {
   ArrowLeft,
   Bot,
@@ -23,8 +29,8 @@ import {
   CheckCircle,
   Clock,
   ExternalLink,
-} from "lucide-react"
-import Link from "next/link"
+} from "lucide-react";
+import Link from "next/link";
 
 // Mock agent data - in real app this would come from API based on [id]
 const getAgentData = (id: string) => {
@@ -75,10 +81,10 @@ const getAgentData = (id: string) => {
       avgTradeSize: 1250.0,
       lastActive: "1 day ago",
     },
-  }
+  };
 
-  return agents[id as keyof typeof agents] || agents["1042"]
-}
+  return agents[id as keyof typeof agents] || agents["1042"];
+};
 
 const performanceData = [
   { day: "Mon", value: 1000 },
@@ -88,12 +94,12 @@ const performanceData = [
   { day: "Fri", value: 1089 },
   { day: "Sat", value: 1102 },
   { day: "Sun", value: 1172.2 },
-]
+];
 
 const transactionHistory = [
   {
     id: 1,
-    date: "2024-05-26",
+    date: "2025-05-26",
     time: "14:32",
     action: "Buy",
     asset: "SUI",
@@ -105,7 +111,7 @@ const transactionHistory = [
   },
   {
     id: 2,
-    date: "2024-05-26",
+    date: "2025-05-26",
     time: "09:15",
     action: "Sell",
     asset: "USDT",
@@ -117,7 +123,7 @@ const transactionHistory = [
   },
   {
     id: 3,
-    date: "2024-05-25",
+    date: "2025-05-25",
     time: "16:45",
     action: "Rebalance",
     asset: "Portfolio",
@@ -129,7 +135,7 @@ const transactionHistory = [
   },
   {
     id: 4,
-    date: "2024-05-25",
+    date: "2025-05-25",
     time: "11:20",
     action: "Buy",
     asset: "SUI",
@@ -141,7 +147,7 @@ const transactionHistory = [
   },
   {
     id: 5,
-    date: "2024-05-24",
+    date: "2025-05-24",
     time: "13:08",
     action: "Buy",
     asset: "BTC",
@@ -151,22 +157,25 @@ const transactionHistory = [
     color: "text-green-600",
     hash: "0x5678...9012",
   },
-]
+];
 
 interface AgentProfileProps {
   params: {
-    id: string
-  }
+    id: string;
+  };
 }
 
 export default function AgentProfilePage({ params }: AgentProfileProps) {
-  const agent = getAgentData(params.id)
-  const pnl = agent.currentValue - agent.mintPrice
-  const pnlPercentage = ((pnl / agent.mintPrice) * 100).toFixed(1)
-  const isProfit = pnl >= 0
+  const agent = getAgentData(params.id);
+  const pnl = agent.currentValue - agent.mintPrice;
+  const pnlPercentage = ((pnl / agent.mintPrice) * 100).toFixed(1);
+  const isProfit = pnl >= 0;
 
-  const marketDifference = agent.marketPrice - agent.currentValue
-  const marketDiffPercentage = ((marketDifference / agent.currentValue) * 100).toFixed(1)
+  const marketDifference = agent.marketPrice - agent.currentValue;
+  const marketDiffPercentage = (
+    (marketDifference / agent.currentValue) *
+    100
+  ).toFixed(1);
 
   return (
     <div className="min-h-screen bg-white">
@@ -178,7 +187,9 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
               <div className="w-8 h-8 bg-[#011829] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">C</span>
               </div>
-              <span className="text-[#011829] font-bold text-xl">ConvictionFi</span>
+              <span className="text-[#011829] font-bold text-xl">
+                ConvictionFi
+              </span>
             </Link>
             <div className="flex items-center space-x-4">
               <Link href="/marketplace">
@@ -213,15 +224,22 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
                             agent.status === "Active"
                               ? "bg-green-100 text-green-700"
                               : agent.status === "Evolving"
-                                ? "bg-yellow-100 text-yellow-700"
-                                : "bg-red-100 text-red-700"
+                              ? "bg-yellow-100 text-yellow-700"
+                              : "bg-red-100 text-red-700"
                           }
                         >
-                          {agent.status === "Active" ? "🟢" : agent.status === "Evolving" ? "🟡" : "🔴"} {agent.status}
+                          {agent.status === "Active"
+                            ? "🟢"
+                            : agent.status === "Evolving"
+                            ? "🟡"
+                            : "🔴"}{" "}
+                          {agent.status}
                         </Badge>
                         <div className="flex items-center space-x-2">
                           <agent.icon className="h-4 w-4 text-[#4DA2FF]" />
-                          <Badge className={agent.color}>{agent.strategyLabel}</Badge>
+                          <Badge className={agent.color}>
+                            {agent.strategyLabel}
+                          </Badge>
                         </div>
                       </div>
                       <div className="flex items-center space-x-4 text-sm text-[#030F1C]">
@@ -245,12 +263,17 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
                   {/* Evolution Progress */}
                   <div className="mb-4">
                     <div className="flex items-center justify-between mb-2">
-                      <p className="text-sm font-medium text-[#011829]">Evolution Progress</p>
+                      <p className="text-sm font-medium text-[#011829]">
+                        Evolution Progress
+                      </p>
                       <span className="text-sm text-[#030F1C]">
                         Stage {agent.evolutionStage}/{agent.maxStage}
                       </span>
                     </div>
-                    <Progress value={(agent.evolutionStage / agent.maxStage) * 100} className="h-3" />
+                    <Progress
+                      value={(agent.evolutionStage / agent.maxStage) * 100}
+                      className="h-3"
+                    />
                     <p className="text-xs text-[#030F1C] mt-1">
                       {agent.evolutionStage === agent.maxStage
                         ? "Agent has reached maximum evolution"
@@ -268,20 +291,37 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
                 <CardContent>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     <div>
-                      <p className="text-sm font-medium text-[#011829] mb-1">Mint Price</p>
-                      <p className="text-xl font-semibold text-[#030F1C]">{agent.mintPrice} USDC</p>
+                      <p className="text-sm font-medium text-[#011829] mb-1">
+                        Mint Price
+                      </p>
+                      <p className="text-xl font-semibold text-[#030F1C]">
+                        {agent.mintPrice} USDC
+                      </p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[#011829] mb-1">Current Value</p>
-                      <p className="text-xl font-semibold text-[#030F1C]">{agent.currentValue} USDC</p>
+                      <p className="text-sm font-medium text-[#011829] mb-1">
+                        Current Value
+                      </p>
+                      <p className="text-xl font-semibold text-[#030F1C]">
+                        {agent.currentValue} USDC
+                      </p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[#011829] mb-1">Market Price</p>
+                      <p className="text-sm font-medium text-[#011829] mb-1">
+                        Market Price
+                      </p>
                       <div className="flex items-center space-x-2">
-                        <p className="text-xl font-bold text-[#030F1C]">{agent.marketPrice} USDC</p>
-                        {Math.abs(Number.parseFloat(marketDiffPercentage)) > 2 && (
+                        <p className="text-xl font-bold text-[#030F1C]">
+                          {agent.marketPrice} USDC
+                        </p>
+                        {Math.abs(Number.parseFloat(marketDiffPercentage)) >
+                          2 && (
                           <Badge
-                            className={marketDifference > 0 ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}
+                            className={
+                              marketDifference > 0
+                                ? "bg-red-100 text-red-700"
+                                : "bg-green-100 text-green-700"
+                            }
                           >
                             {marketDifference > 0 ? "+" : ""}
                             {marketDiffPercentage}%
@@ -290,28 +330,42 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
                       </div>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[#011829] mb-1">P&L</p>
+                      <p className="text-sm font-medium text-[#011829] mb-1">
+                        P&L
+                      </p>
                       <div className="flex items-center space-x-2">
                         {isProfit ? (
                           <TrendingUp className="h-4 w-4 text-green-600" />
                         ) : (
                           <TrendingDown className="h-4 w-4 text-red-600" />
                         )}
-                        <p className={`text-xl font-semibold ${isProfit ? "text-green-600" : "text-red-600"}`}>
+                        <p
+                          className={`text-xl font-semibold ${
+                            isProfit ? "text-green-600" : "text-red-600"
+                          }`}
+                        >
                           {isProfit ? "+" : ""}
                           {pnl.toFixed(1)} USDC ({pnlPercentage}%)
                         </p>
                       </div>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[#011829] mb-1">Lock Period</p>
+                      <p className="text-sm font-medium text-[#011829] mb-1">
+                        Lock Period
+                      </p>
                       <p className="text-xl font-semibold text-[#030F1C]">
-                        {agent.lockPeriodRemaining > 0 ? `${agent.lockPeriodRemaining} days` : "Unlocked"}
+                        {agent.lockPeriodRemaining > 0
+                          ? `${agent.lockPeriodRemaining} days`
+                          : "Unlocked"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[#011829] mb-1">Win Rate</p>
-                      <p className="text-xl font-semibold text-green-600">{agent.winRate}%</p>
+                      <p className="text-sm font-medium text-[#011829] mb-1">
+                        Win Rate
+                      </p>
+                      <p className="text-xl font-semibold text-green-600">
+                        {agent.winRate}%
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -320,24 +374,35 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
               {/* Performance Chart */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#011829]">7-Day Performance</CardTitle>
-                  <CardDescription>Value tracking over the past week</CardDescription>
+                  <CardTitle className="text-[#011829]">
+                    7-Day Performance
+                  </CardTitle>
+                  <CardDescription>
+                    Value tracking over the past week
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-64 bg-gray-50 rounded-lg p-4">
                     <div className="flex items-end justify-between h-full space-x-2">
                       {performanceData.map((data, index) => {
-                        const height = ((data.value - 1000) / 172.2) * 100
+                        const height = ((data.value - 1000) / 172.2) * 100;
                         return (
-                          <div key={index} className="flex flex-col items-center flex-1">
-                            <div className="text-xs text-[#030F1C] mb-2">{data.value}</div>
+                          <div
+                            key={index}
+                            className="flex flex-col items-center flex-1"
+                          >
+                            <div className="text-xs text-[#030F1C] mb-2">
+                              {data.value}
+                            </div>
                             <div
                               className="bg-[#4DA2FF] rounded-t-sm w-full min-h-[4px] transition-all"
                               style={{ height: `${Math.max(height, 4)}%` }}
                             ></div>
-                            <span className="text-xs text-[#030F1C] mt-2">{data.day}</span>
+                            <span className="text-xs text-[#030F1C] mt-2">
+                              {data.day}
+                            </span>
                           </div>
-                        )
+                        );
                       })}
                     </div>
                   </div>
@@ -347,7 +412,9 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
               {/* Transaction History */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#011829]">Transaction History</CardTitle>
+                  <CardTitle className="text-[#011829]">
+                    Transaction History
+                  </CardTitle>
                   <CardDescription>Recent trading activity</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -358,18 +425,25 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
                         className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                       >
                         <div className="flex items-center space-x-4">
-                          <div className={`p-2 rounded-full bg-white ${transaction.color}`}>
+                          <div
+                            className={`p-2 rounded-full bg-white ${transaction.color}`}
+                          >
                             <transaction.icon className="h-4 w-4" />
                           </div>
                           <div>
-                            <p className="font-medium text-[#011829]">{transaction.action}</p>
+                            <p className="font-medium text-[#011829]">
+                              {transaction.action}
+                            </p>
                             <p className="text-sm text-[#030F1C]">
-                              {transaction.asset} • {transaction.date} {transaction.time}
+                              {transaction.asset} • {transaction.date}{" "}
+                              {transaction.time}
                             </p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-[#011829]">{transaction.amount}</p>
+                          <p className="font-medium text-[#011829]">
+                            {transaction.amount}
+                          </p>
                           <div className="flex items-center space-x-2">
                             {transaction.status === "Confirmed" ? (
                               <CheckCircle className="h-3 w-3 text-green-600" />
@@ -378,7 +452,9 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
                             )}
                             <span
                               className={`text-xs ${
-                                transaction.status === "Confirmed" ? "text-green-600" : "text-yellow-600"
+                                transaction.status === "Confirmed"
+                                  ? "text-green-600"
+                                  : "text-yellow-600"
                               }`}
                             >
                               {transaction.status}
@@ -400,13 +476,19 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
               {/* Call to Action */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#011829]">Purchase Agent</CardTitle>
-                  <CardDescription>Take ownership of this agent and its trading history</CardDescription>
+                  <CardTitle className="text-[#011829]">
+                    Purchase Agent
+                  </CardTitle>
+                  <CardDescription>
+                    Take ownership of this agent and its trading history
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="p-4 bg-[#4DA2FF]/5 rounded-lg">
                     <p className="text-sm text-[#030F1C] mb-2">Market Price</p>
-                    <p className="text-2xl font-bold text-[#011829]">{agent.marketPrice} USDC</p>
+                    <p className="text-2xl font-bold text-[#011829]">
+                      {agent.marketPrice} USDC
+                    </p>
                   </div>
 
                   <Button className="w-full bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white py-3">
@@ -425,7 +507,8 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
                   </Button>
 
                   <p className="text-xs text-[#030F1C] text-center">
-                    When you buy this agent, you take over its wallet and trading history.
+                    When you buy this agent, you take over its wallet and
+                    trading history.
                   </p>
                 </CardContent>
               </Card>
@@ -433,38 +516,60 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
               {/* Agent Description */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#011829]">Strategy Description</CardTitle>
+                  <CardTitle className="text-[#011829]">
+                    Strategy Description
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-[#030F1C] leading-relaxed">{agent.description}</p>
+                  <p className="text-[#030F1C] leading-relaxed">
+                    {agent.description}
+                  </p>
                 </CardContent>
               </Card>
 
               {/* Agent Statistics */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-[#011829]">Agent Statistics</CardTitle>
+                  <CardTitle className="text-[#011829]">
+                    Agent Statistics
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
-                    <span className="text-sm text-[#030F1C]">Total Trades:</span>
-                    <span className="font-medium text-[#011829]">{agent.totalTrades}</span>
+                    <span className="text-sm text-[#030F1C]">
+                      Total Trades:
+                    </span>
+                    <span className="font-medium text-[#011829]">
+                      {agent.totalTrades}
+                    </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm text-[#030F1C]">Avg Trade Size:</span>
-                    <span className="font-medium text-[#011829]">{agent.avgTradeSize} USDC</span>
+                    <span className="text-sm text-[#030F1C]">
+                      Avg Trade Size:
+                    </span>
+                    <span className="font-medium text-[#011829]">
+                      {agent.avgTradeSize} USDC
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-[#030F1C]">Win Rate:</span>
-                    <span className="font-medium text-green-600">{agent.winRate}%</span>
+                    <span className="font-medium text-green-600">
+                      {agent.winRate}%
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm text-[#030F1C]">Days Active:</span>
-                    <span className="font-medium text-[#011829]">{agent.daysActive}</span>
+                    <span className="font-medium text-[#011829]">
+                      {agent.daysActive}
+                    </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm text-[#030F1C]">Current Owner:</span>
-                    <span className="font-mono text-sm text-[#4DA2FF]">{agent.owner}</span>
+                    <span className="text-sm text-[#030F1C]">
+                      Current Owner:
+                    </span>
+                    <span className="font-mono text-sm text-[#4DA2FF]">
+                      {agent.owner}
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -473,5 +578,5 @@ export default function AgentProfilePage({ params }: AgentProfileProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
