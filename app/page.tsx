@@ -75,8 +75,9 @@ export default function ConvictionFiLanding() {
                 variant="outline"
                 className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white px-8 py-4 text-lg transition-all hover:scale-105"
               >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
+                {/* <Play className="mr-2 h-5 w-5" /> */}
+                Watch Marketplace
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
           </div>
