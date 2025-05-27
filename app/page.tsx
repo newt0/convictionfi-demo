@@ -62,23 +62,28 @@ export default function ConvictionFiLanding() {
               conviction.{" "}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-[#011829] hover:bg-[#022a3d] text-white px-8 py-4 text-lg transition-all hover:scale-105"
-                onClick={scrollToMintSection}
-              >
-                Mint Agent
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white px-8 py-4 text-lg transition-all hover:scale-105"
-              >
-                {/* <Play className="mr-2 h-5 w-5" /> */}
-                Watch Marketplace
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              {/* Mint Agent → /mint に遷移 */}
+              <Link href="/mint" passHref>
+                <Button
+                  size="lg"
+                  className="bg-[#011829] hover:bg-[#022a3d] text-white px-8 py-4 text-lg transition-all hover:scale-105"
+                >
+                  Mint Agent
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+
+              {/* Watch Marketplace → /marketplace に遷移 */}
+              <Link href="/marketplace" passHref>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white px-8 py-4 text-lg transition-all hover:scale-105"
+                >
+                  Watch Marketplace
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
