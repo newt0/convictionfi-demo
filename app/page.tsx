@@ -62,13 +62,13 @@ export default function ConvictionFiLanding() {
               conviction.{" "}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* Mint Agent → /mint に遷移 */}
+              {/* Mint DeFAI Agent → /mint に遷移 */}
               <Link href="/mint" passHref>
                 <Button
                   size="lg"
                   className="bg-[#011829] hover:bg-[#022a3d] text-white px-8 py-4 text-lg transition-all hover:scale-105"
                 >
-                  Mint Agent
+                  Mint DeFAI Agent
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
