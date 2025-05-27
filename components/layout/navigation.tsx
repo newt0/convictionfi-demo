@@ -10,8 +10,8 @@ import { usePathname } from "next/navigation";
 const navigationItems = [
   { name: "Marketplace", href: "/marketplace" },
   { name: "Compare", href: "/compare" },
-  { name: "Profile", href: "/profile" },
   { name: "Dashboard", href: "/dashboard" },
+  { name: "Profile", href: "/profile" },
 ];
 
 export function Navigation() {
