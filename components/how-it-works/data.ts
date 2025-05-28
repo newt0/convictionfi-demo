@@ -4,9 +4,9 @@ import type { Step } from "./types";
 const steps: Step[] = [
   {
     id: 1,
-    title: "Mint",
+    title: "Choose & Mint",
     subtitle:
-      "Begin your journey by exploring our platform's features and capabilities. Our intuitive interface makes it easy to find exactly what you need, when you need it, without any unnecessary complexity.",
+      "You select a trading thesis—like staking $SUI or holding $BTC—and mint an NFT agent. Your conviction is now on-chain. From this point on, the agent acts on your behalf, no setup or dashboards required.",
     description: [
       "Choose your trading thesis",
       "Set risk parameters",
@@ -17,8 +17,9 @@ const steps: Step[] = [
   },
   {
     id: 2,
-    title: "Deploy",
-    subtitle: "Your NFT becomes a live DeFAI Agent",
+    title: "Initialize & Deploy",
+    subtitle:
+      "The NFT creates a smart wallet and deposits the full mint amount. It loads strategy logic from Walrus and is deployed via Sui Agent Kit. From here, the autonomous agent is ready to operate without intervention.",
     description: [
       "NFT is deployed as a smart contract wallet",
       "Agent receives funds and config",
@@ -29,8 +30,9 @@ const steps: Step[] = [
   },
   {
     id: 3,
-    title: "Trade",
-    subtitle: "The agent trades 24/7 based on your encoded strategy.",
+    title: "Trade & Report",
+    subtitle:
+      "The agent trades based on strategy and market signals. Key updates—wallet balance, trade logs, and performance—are posted on Twitter. Each post invites social engagement, turning transparency into organic growth.",
     description: [
       "Market monitoring via AI signals",
       "Real-time token swaps via DEX",
@@ -42,7 +44,8 @@ const steps: Step[] = [
   {
     id: 4,
     title: "Evolve",
-    subtitle: "Agent evolves using Walrus decentralized memory.",
+    subtitle:
+      "Agents evolve as strategy metadata is updated via Walrus. Logic adapts, but conviction remains fixed. While the system learns and adjusts over time, the original belief minted into the NFT stays untouched.",
     description: [
       "Storage of trade history & performance",
       "Prompt updates via on-chain governance",
@@ -54,7 +57,8 @@ const steps: Step[] = [
   {
     id: 5,
     title: "Exit",
-    subtitle: "Withdraw profits or sell your evolved NFT.",
+    subtitle:
+      "Most agents exit automatically via triggers or time locks. But users can still intervene—selling the NFT or requesting a refund if allowed. The belief defines the path, but user agency remains intact throughout.",
     description: [
       "Transfer or list the NFT",
       "Withdraw residual funds",
