@@ -49,7 +49,7 @@ export default function HowItWorks() {
 
   return (
     <section
-      className="py-20 bg-background"
+      className="bg-background"
       aria-labelledby="how-it-works-title"
       onMouseEnter={pauseAnimation}
       onMouseLeave={resumeAnimation}
@@ -58,13 +58,10 @@ export default function HowItWorks() {
     >
       <div className="container px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2
-            id="how-it-works-title"
-            className="text-4xl font-bold tracking-tight sm:text-5xl mb-4"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold text-[#011829] mb-4">
             How It Works
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+          <p className="text-lg text-[#030F1C] max-w-2xl mx-auto">
             Our simple three-step process makes it easy to get started and
             achieve results quickly.
           </p>
