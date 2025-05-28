@@ -57,9 +57,7 @@ export default function ConvictionFiLanding() {
               <span className="text-[#4DA2FF]">DeFAI Agent as NFT.</span>
             </h1>
             <p className="text-xl md:text-2xl text-[#030F1C] mb-10 max-w-3xl mx-auto leading-relaxed">
-              The NFT isn’t just a token. It’s your Guardian — standing between
-              you and DeFi & Crypto Investing. A Safety Layer, encoded with
-              conviction.{" "}
+              Your NFT is the safety layer standing between you and DeFi.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {/* Mint DeFAI Agent → /mint に遷移 */}
