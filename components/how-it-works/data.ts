@@ -43,7 +43,7 @@ const steps: Step[] = [
   },
   {
     id: 4,
-    title: "Evolve",
+    title: "Learn & Evolve",
     subtitle:
       "Agents evolve as strategy metadata is updated via Walrus. Logic adapts, but conviction remains fixed. While the system learns and adjusts over time, the original belief minted into the NFT stays untouched.",
     description: [
@@ -56,7 +56,7 @@ const steps: Step[] = [
   },
   {
     id: 5,
-    title: "Exit",
+    title: "Exit or Transfer",
     subtitle:
       "Most agents exit automatically via triggers or time locks. But users can still intervene—selling the NFT or requesting a refund if allowed. The belief defines the path, but user agency remains intact throughout.",
     description: [
