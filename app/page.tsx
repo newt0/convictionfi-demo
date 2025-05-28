@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Twitter, Linkedin, Github, Facebook } from "lucide-react";
+import HowItWorks from "@/components/how-it-works/HowItWorks";
 
 export default function ConvictionFiLanding() {
   const mintSectionRef = useRef<HTMLElement>(null);
@@ -209,72 +210,7 @@ export default function ConvictionFiLanding() {
       {/* How It Works */}
       <section id="how-it-works" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#011829] mb-4">
-              How It Works
-            </h2>
-            <p className="text-lg text-[#030F1C] max-w-2xl mx-auto">
-              Five simple steps to transform your conviction into an autonomous
-              trading agent.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-5 gap-8">
-            {[
-              {
-                step: "01",
-                title: "Mint",
-                description:
-                  "Create your conviction NFT with your trading thesis and risk parameters",
-                icon: Coins,
-              },
-              {
-                step: "02",
-                title: "Deploy",
-                description:
-                  "Your NFT becomes an autonomous AI agent on the Sui blockchain",
-                icon: Bot,
-              },
-              {
-                step: "03",
-                title: "Trade",
-                description:
-                  "Agent executes trades 24/7 based on your encoded conviction",
-                icon: TrendingUp,
-              },
-              {
-                step: "04",
-                title: "Evolve",
-                description:
-                  "Agent learns and adapts using Walrus decentralized storage",
-                icon: Sparkles,
-              },
-              {
-                step: "05",
-                title: "Exit",
-                description:
-                  "Withdraw profits or transfer your evolved agent NFT",
-                icon: ArrowRight,
-              },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-[#4DA2FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#011829] text-white rounded-full flex items-center justify-center text-sm font-bold">
-                    {item.step}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-[#011829] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-[#030F1C] text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <HowItWorks />
         </div>
       </section>
 
