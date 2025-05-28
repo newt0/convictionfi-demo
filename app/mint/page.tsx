@@ -236,10 +236,12 @@ export default function MintPage() {
                 </div>
 
                 <div className="flex gap-3 pt-4">
-                  <Button className="flex-1 bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white">
-                    <TrendingUp className="mr-2 h-4 w-4" />
-                    View Agent Dashboard
-                  </Button>
+                  <Link href="/dashboard" className="flex flex-1">
+                    <Button className="flex-1 bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white">
+                      <TrendingUp className="mr-2 h-4 w-4" />
+                      View Agent Dashboard
+                    </Button>
+                  </Link>
                   <Button
                     variant="outline"
                     className="flex-1 border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white"
