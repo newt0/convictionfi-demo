@@ -17,7 +17,7 @@ const steps: Step[] = [
   },
   {
     id: 2,
-    title: "Initialize & Deploy",
+    title: "Your NFT = Your AI Agent",
     subtitle:
       "The NFT creates a smart wallet and deposits the full mint amount. It loads strategy logic from Walrus and is deployed via Sui Agent Kit. From here, the autonomous agent is ready to operate without intervention.",
     description: [
