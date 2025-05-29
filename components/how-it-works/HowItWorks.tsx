@@ -62,8 +62,10 @@ export default function HowItWorks() {
             How It Works
           </h2>
           <p className="text-lg text-[#030F1C] max-w-2xl mx-auto">
-            Our simple three-step process makes it easy to get started and
-            achieve results quickly.
+            ConvictionFi lets you invest with conviction — in five steps.
+          </p>
+          <p className="text-lg text-[#030F1C] max-w-2xl mx-auto">
+            <b>Only Step 1 is yours. From Step 2, the agent acts. </b>
           </p>
         </div>
 
