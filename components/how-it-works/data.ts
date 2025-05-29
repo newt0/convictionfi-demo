@@ -12,7 +12,7 @@ const steps: Step[] = [
       "Set risk parameters",
       "Mint your NFT on Sui blockchain",
     ],
-    image: "/placeholder.svg?height=600&width=500",
+    image: "how-it-works/choose-and-mint.png",
     imageAlt: "Minting conviction NFT",
   },
   {
@@ -25,7 +25,7 @@ const steps: Step[] = [
       "Agent receives funds and config",
       "Start autonomous execution",
     ],
-    image: "/placeholder.svg?height=600&width=500",
+    image: "how-it-works/nft-becomes-ai-agent.png",
     imageAlt: "Deploying DeFAI Agent",
   },
   {
@@ -38,7 +38,7 @@ const steps: Step[] = [
       "Real-time token swaps via DEX",
       "Risk-managed execution",
     ],
-    image: "/placeholder.svg?height=600&width=500",
+    image: "how-it-works/trade-and-report.png",
     imageAlt: "Autonomous crypto trading",
   },
   {
@@ -51,7 +51,7 @@ const steps: Step[] = [
       "Prompt updates via on-chain governance",
       "Zero-knowledge secure logs",
     ],
-    image: "/placeholder.svg?height=600&width=500",
+    image: "how-it-works/learn-and-evolve.png",
     imageAlt: "Evolving AI Agent",
   },
   {
@@ -64,7 +64,7 @@ const steps: Step[] = [
       "Withdraw residual funds",
       "Keep or archive your evolved agent",
     ],
-    image: "/placeholder.svg?height=600&width=500",
+    image: "how-it-works/exit-or-transfer.png",
     imageAlt: "Exit strategy",
   },
 ];
