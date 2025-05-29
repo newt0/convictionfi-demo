@@ -23,7 +23,6 @@ import {
   Wallet,
   Bot,
   CheckCircle,
-  ArrowLeft,
   Target,
   Shield,
   PieChart,
