@@ -6,20 +6,20 @@ const steps: Step[] = [
     id: 1,
     title: "Choose & Mint",
     subtitle:
-      "You select a trading thesis—like staking $SUI or holding $BTC—and mint an NFT agent. Your conviction is now on-chain. From this point on, the agent acts on your behalf, no setup or dashboards required.",
+      "Mint an NFT, get an AI trader. Each NFT represents a trading philosophy (BTC_HODLER, SUI_MAXI etc.) with its own wallet. The AI executes trades automatically based on your chosen conviction.",
     description: [
-      "Choose your trading thesis",
-      "Set risk parameters",
-      "Mint your NFT on Sui blockchain",
+      "Choose your conviction",
+      "Select Mint Price",
+      "Mint your NFT on Sui",
     ],
     image: "how-it-works/choose-and-mint.png",
     imageAlt: "Minting conviction NFT",
   },
   {
     id: 2,
-    title: "Your NFT = Your AI Agent",
+    title: "NFT becomes AI Agent",
     subtitle:
-      "The NFT creates a smart wallet and deposits the full mint amount. It loads strategy logic from Walrus and is deployed via Sui Agent Kit. From here, the autonomous agent is ready to operate without intervention.",
+      "The NFT creates a smart wallet and deposits the mint price. It loads strategy logic from Walrus and is deployed via Sui Agent Kit. From here, the autonomous agent is ready to operate without intervention.",
     description: [
       "NFT is deployed as a smart contract wallet",
       "Agent receives funds and config",
